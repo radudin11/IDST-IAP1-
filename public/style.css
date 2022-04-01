@@ -10,13 +10,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 header {
-  background-color: #26262e;
+  background-color:#fbe1e0
+  ;
 }
 
 /* TODO: insert your preferred header here */
 header #header-image {
   height: 180px;
-  background: url('<TODO: insert image path here>');
+  background: url("./images/cats.jpeg");
   background-size: cover;
   padding: 1rem 2rem;
   text-align: right;
@@ -24,7 +25,7 @@ header #header-image {
 
 header #header-image h1 {
   display: inline-block;
-  background: #222;
+  background: #fbe1e0;
   margin-top: 1rem;
   padding: 0.5rem;
   color: white;
@@ -34,7 +35,7 @@ header #header-image h1 {
 /* Site header + navigation */
 /* TODO: customize your colors */
 .site-header > nav {
-  background-color: #721;
+  background-color: rgb(28, 66, 190);
 }
 .site-header .navbar-nav .nav-link {
   color: #EEEEEE;
@@ -62,6 +63,7 @@ main {
   padding: 10px 20px;
   border: 1px solid #dddddd;
   margin-bottom: 20px;
+  border-radius: 15px;
 }
 .content-box.main-content {
   min-height: 100%;
