@@ -1,3 +1,5 @@
+#!.venv/bin/python3
+
 import argparse         # argument parsing
 import struct           # data unpacking
 from PIL import Image   # image processing
@@ -19,32 +21,19 @@ def main():
 
     cfg = parser.parse_args()
 
-    # TODO 1: read contents of cfg.src (the frame buffer)
-    frameBuff = open(cfg.FILE, "rb")
-    # TODO 2: split data in groups of 4 bytes
+    img = Image.open(cfg.FILE)
+    frameBuffer = open(cfg.dst, "wb")
     
-    # create a new PIL Image object
-    img = Image.new('RGB', (cfg.width, cfg.height))
-    px  = img.load()
-
-    # set each pixel value
-    for i in range(cfg.hoff, cfg.width - cfg.hoff):
-        for j in range(cfg.voff, cfg.height- cfg.voff):
-            # TODO 3: write each pixel value in px[i,j] as a RGB tuple
-            # NOTE  : the four bytes in the groups that you split previously
-            #         are in fact in BGRA format; we don't need the Alpha
-            #         value but the other three bytes must be revered
-            red = int.from_bytes(frameBuff.read(1), "little")        
-            green = int.from_bytes(frameBuff.read(1), "little")        
-            blue = int.from_bytes(frameBuff.read(1), "little")        
-            alpha = int.from_bytes(frameBuff.read(1), "little")        
-            px[i, j] = (red, green, blue)
-    # save image do disk
-    # NOTE: format will be determined from the file's extension
-    img.save(cfg.FILE, None)
-
-    # clean up PIL Image object
+    alpha = 1
+    data = img.load()
+    for i in range(cfg.width - cfg.hoff):
+        for j in range(cfg.height- cfg.voff):
+            frameBuffer.write( (int(data[i, j][2])).to_bytes(1, "little"))
+            frameBuffer.write( (int(data[i, j][1])).to_bytes(1, "little"))
+            frameBuffer.write( (int(data[i, j][0])).to_bytes(1, "little"))
+            frameBuffer.write(alpha.to_bytes(1, "little"))
     img.close()
+    frameBuffer.close()
 
 if __name__ == '__main__':
     main()
