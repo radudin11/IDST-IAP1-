@@ -17,7 +17,6 @@ def main():
     cfg = parser.parse_args()
 
     # TODO 1: read contents of cfg.src (the frame buffer)
-    print(cfg.src)
     frameBuff = open(cfg.src, "rb")
     # TODO 2: split data in groups of 4 bytes
     
@@ -32,7 +31,7 @@ def main():
             # NOTE  : the four bytes in the groups that you split previously
             #         are in fact in BGRA format; we don't need the Alpha
             #         value but the other three bytes must be revered
-            blue = int.from_bytes(frameBuff.read(1), "little" )
+            blue = int.from_bytes(frameBuff.read(1), "little")
             red = int.from_bytes(frameBuff.read(1), "little")
             green = int.from_bytes(frameBuff.read(1), "little")
             alpha = int.from_bytes(frameBuff.read(1), "little")
