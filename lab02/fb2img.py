@@ -31,11 +31,13 @@ def main():
             # NOTE  : the four bytes in the groups that you split previously
             #         are in fact in BGRA format; we don't need the Alpha
             #         value but the other three bytes must be revered
-            blue = int.from_bytes(frameBuff.read(1), "little")        
-            green = int.from_bytes(frameBuff.read(1), "little")        
-            red = int.from_bytes(frameBuff.read(1), "little")        
-            alpha = int.from_bytes(frameBuff.read(1), "little")        
-            px[i, j] = (red, green, blue)
+            blue = int.from_bytes(frameBuff.read(1), "little")
+            red = int.from_bytes(frameBuff.read(1), "little")
+            green = int.from_bytes(frameBuff.read(1), "little")
+            alpha = int.from_bytes(frameBuff.read(1), "little")
+
+            px[i, j] = (red ,green, blue) 
+    
     # save image do disk
     # NOTE: format will be determined from the file's extension
     img.save(cfg.FILE, None)
