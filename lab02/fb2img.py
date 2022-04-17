@@ -1,7 +1,6 @@
 #!.venv/bin/python3
 
-import argparse
-from pickletools import int4         # argument parsing
+import argparse         # argument parsing
 import struct           # data unpacking
 from PIL import Image   # image processing
 
