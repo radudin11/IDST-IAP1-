@@ -1,0 +1,4 @@
+docker build -t mynodeimage .
+docker run -d -p 12345:8080 mynodeimage
+docker stop musing_northcutt
+docker system prune

@@ -1,0 +1,12 @@
+docker image pull busybox
+docker run busybox uptime
+docker run -it busybox
+wget google.com
+exit
+docker run --name busybox5 -d -it busybox
+docker attach busybox5
+id
+exit
+docker system prune
+docker rmi busybox
+docker rmi hello-world

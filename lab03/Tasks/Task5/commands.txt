@@ -1,0 +1,5 @@
+docker login
+docker tag mynodeimage radudin/iapp:nodeApp
+docker push radudin/iapp:nodeApp
+docker run -d -p 12345:8080 radudin/iapp:nodeApp
+docker system prune
